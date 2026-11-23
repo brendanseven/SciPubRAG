@@ -1,0 +1,48 @@
+# scipubrag default configuration.
+# Copy this file to make an experiment, e.g. config/c250.toml, and run:
+#   scipubrag --config config/c250.toml ingest
+# Or override single values on the command line:
+#   scipubrag --set chunking.target=250 --set index.name=c250 ingest
+
+[paths]
+input_dir   = "data/pdfs"          # source documents (PDFs for grobid, .md/.txt for markdown)
+tei_dir     = "data/tei"           # GROBID output cache
+parsed_dir  = "data/parsed"        # one clean JSON per document
+chunks_file = "data/chunks/chunks.jsonl"
+index_dir   = "index"
+
+[loader]
+type = "grobid"                    # "grobid" | "markdown"
+
+[grobid]
+url = "http://localhost:8070"
+workers = 4
+timeout = 180
+consolidate_header = false         # true = look up metadata online (slower)
+coordinates = true                 # needed for page numbers in citations
+
+[parsing]
+strip_citations = false            # drop in-text markers like [12] or (Smith, 2020)
+include_acknowledgements = false
+
+[chunking]
+strategy = "section"               # "section" | "fixed"
+target = 400                       # aim for about this many tokens
+max = 512                          # hard ceiling; keep under the embedding model's limit
+min = 80                           # smaller trailing pieces merge backwards
+overlap = 1                        # sentences (section) or tokens/10 (fixed) shared between chunks
+include_captions = true
+include_back = true                # appendices
+
+[embedding]
+provider = "ollama"                # "ollama" | "fake" (deterministic, for tests/offline)
+model = "nomic-embed-text"
+host = "http://localhost:11434"
+num_ctx = 2048
+batch_size = 32
+
+[store]
+backend = "numpy"                  # "numpy" | "chroma"
+
+[index]
+name = "default"                   # index/<name>/; use different names to compare settings

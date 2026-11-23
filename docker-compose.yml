@@ -1,0 +1,26 @@
+services:
+  grobid:
+    image: lfoppiano/grobid:latest-crf   # pin a version tag once things work
+    container_name: grobid
+    ports:
+      - "8070:8070"
+      - "8071:8071"
+    init: true
+    ulimits:
+      core: 0
+    restart: unless-stopped
+
+  # Optional. On macOS, run Ollama natively instead: Docker can't use the Apple GPU.
+  # Start with: docker compose --profile ollama up -d
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama:

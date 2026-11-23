@@ -1,0 +1,29 @@
+# Pipeline outputs (rebuild with `scipubrag ingest`)
+data/tei/
+data/parsed/
+data/chunks/
+index/
+eval/results/
+
+# Source papers: commit only if their licenses allow redistribution
+data/pdfs/*
+!data/pdfs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Secrets
+.env

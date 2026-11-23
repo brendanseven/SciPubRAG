@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+<teiHeader><fileDesc><titleStmt><title level="a" type="main">Attention in Soil Microbes</title></titleStmt>
+<publicationStmt><date type="published" when="2021-03-02">2021</date></publicationStmt>
+<sourceDesc><biblStruct><analytic><author><persName><forename type="first">Jane</forename><forename type="middle">A</forename><surname>Smith</surname></persName></author>
+<author><persName><forename>Bo</forename><surname>Li</surname></persName></author></analytic>
+<monogr><imprint/></monogr><idno type="DOI">10.1000/xyz</idno></biblStruct></sourceDesc></fileDesc>
+<profileDesc><abstract><div><p>We study things .</p></div></abstract></profileDesc></teiHeader>
+<text><body>
+<div><head n="1">Introduction</head><p coords="1,1,1,1,1">Prior work <ref type="bibr">[3]</ref> showed X ( <ref type="bibr">Smith, 2020</ref> ).</p></div>
+<div><head n="2">Methods</head><p coords="2,1,1,1,1">Overview.</p></div>
+<div><head n="2.1">Data</head><p coords="2,1,1,1,1">We collected data.</p><formula coords="2,1,1,1,1">E = mc^2</formula></div>
+<div><p coords="3,1,1,1,1">Continued data text.</p></div>
+<figure xml:id="fig_0" coords="3,1,1,1,1"><head>Figure 1</head><label>1</label><figDesc>Results overview.</figDesc></figure>
+<figure type="table" xml:id="tab_0"><head>Table 1</head><figDesc>Accuracy.</figDesc></figure>
+</body><back><div type="acknowledgement"><div><head>Acknowledgements</head><p>Thanks.</p></div></div>
+<div type="annex"><div><head>Appendix A</head><p>Extra.</p></div></div>
+<div type="references"><listBibl/></div></back></text></TEI>

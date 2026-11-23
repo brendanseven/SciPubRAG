@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scipubrag"
+version = "0.1.0"
+description = "A modular, evaluation-driven RAG pipeline for scientific publications (GROBID + Ollama)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Brendan Bourges-Sevenier" }]
+keywords = ["rag", "retrieval", "grobid", "ollama", "llm", "scientific-papers"]
+dependencies = [
+    "numpy>=1.26",
+    "rank_bm25>=0.2.2",
+]
+
+[project.optional-dependencies]
+# Chroma needs onnxruntime, which has no wheels for Python 3.15 yet.
+chroma = ["chromadb>=1.0"]
+tokens = ["tiktoken>=0.7"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+scipubrag = "scipubrag.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scipubrag"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
